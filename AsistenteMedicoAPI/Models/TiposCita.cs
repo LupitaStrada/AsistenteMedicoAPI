@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AsistenteMedicoAPI.Models;
 
-public partial class TiposCitas
+public partial class TiposCita
 {
     public int Id { get; set; }
 

@@ -61,5 +61,5 @@ public partial class Medico
 
     public virtual ICollection<HorariosMedico> HorariosMedicos { get; set; } = new List<HorariosMedico>();
 
-    public virtual ICollection<MedicoEspecialidade> MedicoEspecialidades { get; set; } = new List<MedicoEspecialidade>();
+    public virtual ICollection<MedicoEspecialidades> MedicoEspecialidades { get; set; } = new List<MedicoEspecialidades>();
 }

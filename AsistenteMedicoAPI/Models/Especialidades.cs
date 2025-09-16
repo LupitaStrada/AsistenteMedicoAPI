@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AsistenteMedicoAPI.Models;
 
-public partial class Especialidade
+public partial class Especialidades
 {
     public int Id { get; set; }
 

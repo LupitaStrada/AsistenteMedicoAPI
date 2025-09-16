@@ -13,7 +13,7 @@ public partial class MedicoEspecialidades
 
     public DateTime? FechaCreacion { get; set; }
 
-    public virtual Especialidade Especialidad { get; set; } = null!;
+    public virtual Especialidades Especialidad { get; set; } = null!;
 
     public virtual Medico Medico { get; set; } = null!;
 }

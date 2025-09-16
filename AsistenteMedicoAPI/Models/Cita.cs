@@ -59,5 +59,5 @@ public partial class Cita
 
     public virtual Paciente Paciente { get; set; } = null!;
 
-    public virtual TiposCitas? TipoCita { get; set; }
+    public virtual TiposCita? TipoCita { get; set; }
 }

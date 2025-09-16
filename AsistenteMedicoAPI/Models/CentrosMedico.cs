@@ -37,5 +37,5 @@ public partial class CentrosMedico
 
     public virtual ICollection<Paciente> Pacientes { get; set; } = new List<Paciente>();
 
-    public virtual ICollection<TiposCitas> TiposCita { get; set; } = new List<TiposCitas>();
+    public virtual ICollection<TiposCita> TiposCita { get; set; } = new List<TiposCita>();
 }

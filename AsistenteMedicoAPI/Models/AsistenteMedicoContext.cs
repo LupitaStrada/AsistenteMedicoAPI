@@ -20,21 +20,17 @@ public partial class AsistenteMedicoContext : DbContext
 
     public virtual DbSet<Cita> Citas { get; set; }
 
-    public virtual DbSet<Especialidade> Especialidades { get; set; }
+    public virtual DbSet<Especialidades> Especialidades { get; set; }
 
     public virtual DbSet<HorariosMedico> HorariosMedicos { get; set; }
 
     public virtual DbSet<Medico> Medicos { get; set; }
 
-    public virtual DbSet<MedicoEspecialidade> MedicoEspecialidades { get; set; }
+    public virtual DbSet<MedicoEspecialidades> MedicoEspecialidades { get; set; }
 
     public virtual DbSet<Paciente> Pacientes { get; set; }
 
-    public virtual DbSet<TiposCitas> TiposCita { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;database=asistenteMedico;uid=root;pwd=12345", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.43-mysql"));
+    public virtual DbSet<TiposCita> TiposCita { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -190,7 +186,7 @@ public partial class AsistenteMedicoContext : DbContext
                 .HasConstraintName("citas_ibfk_4");
         });
 
-        modelBuilder.Entity<Especialidade>(entity =>
+        modelBuilder.Entity<Especialidades>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -341,7 +337,7 @@ public partial class AsistenteMedicoContext : DbContext
                 .HasConstraintName("medicos_ibfk_1");
         });
 
-        modelBuilder.Entity<MedicoEspecialidade>(entity =>
+        modelBuilder.Entity<MedicoEspecialidades>(entity =>
         {
             entity.HasKey(e => new { e.MedicoId, e.EspecialidadId })
                 .HasName("PRIMARY")
@@ -462,7 +458,7 @@ public partial class AsistenteMedicoContext : DbContext
                 .HasConstraintName("pacientes_ibfk_1");
         });
 
-        modelBuilder.Entity<TiposCitas>(entity =>
+        modelBuilder.Entity<TiposCita>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
