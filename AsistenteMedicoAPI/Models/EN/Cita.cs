@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AsistenteMedicoAPI.Models;
+namespace AsistenteMedicoAPI.Models.EN;
 
 public partial class Cita
 {
@@ -27,7 +27,7 @@ public partial class Cita
 
     public string? Notas { get; set; }
 
-    public string? NotasInternas { get; set; }
+    public string? NotasMedicas { get; set; }
 
     public decimal? Precio { get; set; }
 
@@ -35,25 +35,13 @@ public partial class Cita
 
     public string? MetodoPago { get; set; }
 
-    public bool? RecordatorioEnviado { get; set; }
-
-    public DateTime? FechaEnvioRecordatorio { get; set; }
-
-    public bool? ConfirmacionEnviada { get; set; }
-
-    public DateTime? FechaEnvioConfirmacion { get; set; }
-
-    public string? ReservadaPor { get; set; }
-
-    public string? FuenteReserva { get; set; }
+    public string? CreadaPor { get; set; }
 
     public DateTime? FechaCreacion { get; set; }
 
     public DateTime? FechaActualizacion { get; set; }
 
-    public int? CreadaPorStaffId { get; set; }
-
-    public virtual CentrosMedico Centro { get; set; } = null!;
+    public virtual CentroMedico Centro { get; set; } = null!;
 
     public virtual Medico Medico { get; set; } = null!;
 

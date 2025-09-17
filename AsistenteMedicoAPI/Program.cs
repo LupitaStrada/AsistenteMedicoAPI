@@ -1,4 +1,4 @@
-using AsistenteMedicoAPI.Models;
+//using AsistenteMedicoAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +14,9 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Registrar el contexto de la base de datos con Entity Framework Core
-builder.Services.AddDbContext<AsistenteMedicoContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-);
+//builder.Services.AddDbContext<AsistenteMedicoContext>(options =>
+//    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+//);
 
 // Añadir el HttpClient para consumir la API
 builder.Services.AddHttpClient("ApiCitasMedicas", client =>

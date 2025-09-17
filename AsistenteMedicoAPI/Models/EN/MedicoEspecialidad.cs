@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AsistenteMedicoAPI.Models;
+namespace AsistenteMedicoAPI.Models.EN;
 
-public partial class MedicoEspecialidades
+public partial class MedicoEspecialidad
 {
     public int MedicoId { get; set; }
 
@@ -13,7 +13,7 @@ public partial class MedicoEspecialidades
 
     public DateTime? FechaCreacion { get; set; }
 
-    public virtual Especialidades Especialidad { get; set; } = null!;
+    public virtual Especialidad Especialidad { get; set; } = null!;
 
     public virtual Medico Medico { get; set; } = null!;
 }

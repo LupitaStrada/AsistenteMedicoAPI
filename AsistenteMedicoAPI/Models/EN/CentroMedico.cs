@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AsistenteMedicoAPI.Models;
+namespace AsistenteMedicoAPI.Models.EN;
 
-public partial class CentrosMedico
+public partial class CentroMedico
 {
     public int Id { get; set; }
 
@@ -17,13 +17,9 @@ public partial class CentrosMedico
 
     public string? SitioWeb { get; set; }
 
-    public string? Logo { get; set; }
-
     public TimeOnly? HorarioInicio { get; set; }
 
     public TimeOnly? HorarioFin { get; set; }
-
-    public string? ZonaHoraria { get; set; }
 
     public bool? EstaActivo { get; set; }
 
@@ -37,5 +33,5 @@ public partial class CentrosMedico
 
     public virtual ICollection<Paciente> Pacientes { get; set; } = new List<Paciente>();
 
-    public virtual ICollection<TiposCita> TiposCita { get; set; } = new List<TiposCita>();
+    public virtual ICollection<TiposCita> Tiposcita { get; set; } = new List<TiposCita>();
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AsistenteMedicoAPI.Models;
+namespace AsistenteMedicoAPI.Models.EN;
 
-public partial class HorariosMedico
+public partial class Horariosmedico
 {
     public int Id { get; set; }
 

@@ -1,8 +1,8 @@
-﻿using AsistenteMedicoAPI.Models;
+﻿using AsistenteMedicoAPI.Models.EN;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace AsistenteMedicoAPI.DAL
+namespace AsistenteMedicoAPI.Models.DAL
 {
     public class CitaDAL
     {
@@ -45,22 +45,14 @@ namespace AsistenteMedicoAPI.DAL
                 citaUpdate.Estado = citaUpdate.Estado;
                 citaUpdate.Motivo = citaUpdate.Motivo;
                 citaUpdate.Notas = citaUpdate.Notas;
-                citaUpdate.NotasInternas = citaUpdate.NotasInternas;
+                citaUpdate.CreadaPor = citaUpdate.CreadaPor;
                 citaUpdate.Precio = citaUpdate.Precio;
                 citaUpdate.EstaPagada = citaUpdate.EstaPagada;
-                citaUpdate.MetodoPago = citaUpdate.MetodoPago;
-                citaUpdate.RecordatorioEnviado = citaUpdate.RecordatorioEnviado;
-                citaUpdate.FechaEnvioRecordatorio = citaUpdate.FechaEnvioRecordatorio;
-                citaUpdate.ConfirmacionEnviada = citaUpdate.ConfirmacionEnviada;
-                citaUpdate.FechaEnvioConfirmacion = citaUpdate.FechaEnvioConfirmacion;
-                citaUpdate.ReservadaPor = citaUpdate.ReservadaPor;
-                citaUpdate.FuenteReserva = citaUpdate.FuenteReserva;
+                citaUpdate.MetodoPago = citaUpdate.MetodoPago;                             
                 citaUpdate.FechaActualizacion = DateTime.Now;
-                citaUpdate.CreadaPorStaffId = citaUpdate.CreadaPorStaffId;
+                citaUpdate.NotasMedicas = citaUpdate.NotasMedicas;
                 citaUpdate.FechaCreacion = citaUpdate.FechaCreacion;
-
                 citaUpdate.FechaCita = citaUpdate.FechaCita;
-
                 result = await _context.SaveChangesAsync();
             }
             return result;

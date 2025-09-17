@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AsistenteMedicoAPI.Models;
+namespace AsistenteMedicoAPI.Models.EN;
 
 public partial class Medico
 {
@@ -27,27 +27,9 @@ public partial class Medico
 
     public int? DuracionCitaPredeterminada { get; set; }
 
-    public int? TiempoBuffer { get; set; }
-
     public int? CitasDiariasMax { get; set; }
 
     public bool? PermitirReservaEnLinea { get; set; }
-
-    public bool? RequiereAprobacion { get; set; }
-
-    public bool? TrabajaLunes { get; set; }
-
-    public bool? TrabajaMartes { get; set; }
-
-    public bool? TrabajaMiercoles { get; set; }
-
-    public bool? TrabajaJueves { get; set; }
-
-    public bool? TrabajaViernes { get; set; }
-
-    public bool? TrabajaSabado { get; set; }
-
-    public bool? TrabajaDomingo { get; set; }
 
     public bool? EstaActivo { get; set; }
 
@@ -55,11 +37,11 @@ public partial class Medico
 
     public DateTime? FechaActualizacion { get; set; }
 
-    public virtual CentrosMedico Centro { get; set; } = null!;
+    public virtual CentroMedico Centro { get; set; } = null!;
 
     public virtual ICollection<Cita> Cita { get; set; } = new List<Cita>();
 
-    public virtual ICollection<HorariosMedico> HorariosMedicos { get; set; } = new List<HorariosMedico>();
+    public virtual ICollection<Horariosmedico> Horariosmedicos { get; set; } = new List<Horariosmedico>();
 
-    public virtual ICollection<MedicoEspecialidades> MedicoEspecialidades { get; set; } = new List<MedicoEspecialidades>();
+    public virtual ICollection<MedicoEspecialidad> Medicoespecialidades { get; set; } = new List<MedicoEspecialidad>();
 }

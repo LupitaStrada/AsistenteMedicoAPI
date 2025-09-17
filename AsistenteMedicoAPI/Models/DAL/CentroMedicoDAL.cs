@@ -1,9 +1,9 @@
-﻿using AsistenteMedicoAPI.Models;
+﻿using AsistenteMedicoAPI.Models.EN;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AsistenteMedicoAPI.DAL
+namespace AsistenteMedicoAPI.Models.DAL
 {
     public class CentroMedicoDAL
     {
@@ -16,21 +16,21 @@ namespace AsistenteMedicoAPI.DAL
         }
 
         // Método para crear un nuevo centro médico
-        public async Task<int> Create(CentrosMedico centroMedico)
+        public async Task<int> Create(CentroMedico centroMedico)
         {
-            _context.CentrosMedicos.Add(centroMedico);
+            _context.Centrosmedicos.Add(centroMedico);
             return await _context.SaveChangesAsync();
         }
 
         // Método para obtener un centro médico por su ID
-        public async Task<CentrosMedico> GetById(int id)
+        public async Task<CentroMedico> GetById(int id)
         {
-            var centroMedico = await _context.CentrosMedicos.SingleOrDefaultAsync(s => s.Id == id);
+            var centroMedico = await _context.Centrosmedicos.SingleOrDefaultAsync(s => s.Id == id);
             return centroMedico;
         }
 
         // Método para editar un centro médico existente
-        public async Task<int> Edit(CentrosMedico centroMedico)
+        public async Task<int> Edit(CentroMedico centroMedico)
         {
             int result = 0;
             var centroUpdate = await GetById(centroMedico.Id);
@@ -56,17 +56,17 @@ namespace AsistenteMedicoAPI.DAL
             if (centroDelete != null)
             {
                 // Elimina el centro médico de la base de datos
-                _context.CentrosMedicos.Remove(centroDelete);
+                _context.Centrosmedicos.Remove(centroDelete);
                 result = await _context.SaveChangesAsync();
             }
             return result;
         }
 
         // Método para buscar y obtener todos los centros médicos
-        public async Task<List<CentrosMedico>> GetAll()
+        public async Task<List<CentroMedico>> GetAll()
         {
-            return await _context.CentrosMedicos.ToListAsync();
+            return await _context.Centrosmedicos.ToListAsync();
         }
-    
-}
+
+    }
 }

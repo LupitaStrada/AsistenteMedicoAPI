@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AsistenteMedicoAPI.Models;
+namespace AsistenteMedicoAPI.Models.EN;
 
 public partial class TiposCita
 {
@@ -19,15 +19,11 @@ public partial class TiposCita
 
     public string? Color { get; set; }
 
-    public bool? RequierePreparacion { get; set; }
-
-    public string? InstruccionesPreparacion { get; set; }
-
     public bool? EstaActivo { get; set; }
 
     public DateTime? FechaCreacion { get; set; }
 
-    public virtual CentrosMedico Centro { get; set; } = null!;
+    public virtual CentroMedico Centro { get; set; } = null!;
 
     public virtual ICollection<Cita> Cita { get; set; } = new List<Cita>();
 }
