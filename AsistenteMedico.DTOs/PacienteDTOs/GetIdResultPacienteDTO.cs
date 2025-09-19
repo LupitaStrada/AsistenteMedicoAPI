@@ -26,15 +26,17 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 
         [Display(Name = "Correo electronico")]
         public DateTime? FechaNacimiento { get; set; }
+
         [Display(Name = "Fecha de nacimiento")]
         public string Genero { get; set; }
-        [Display(Name = "Genero")]
 
+        [Display(Name = "Genero")]
         // Información opcional
         public string ContactoEmergencia { get; set; }
+
         [Display(Name = "Contacto de emergencia")]
         public string TelefonoEmergencia { get; set; }
-        [Display(Name = "Telefono de emergencia")]
 
+     
     }
 }

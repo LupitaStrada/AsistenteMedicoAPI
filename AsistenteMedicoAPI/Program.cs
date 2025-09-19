@@ -1,4 +1,6 @@
-//using AsistenteMedicoAPI.Models;
+using AsistenteMedicoAPI.Models.DAL;
+using AsistenteMedicoAPI.Models.EN;
+using AsistenteMedicoAPI.EndPoints;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,17 +16,13 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Registrar el contexto de la base de datos con Entity Framework Core
-//builder.Services.AddDbContext<AsistenteMedicoContext>(options =>
-//    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-//);
+builder.Services.AddDbContext<AsistenteMedicoContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+);
 
-// Añadir el HttpClient para consumir la API
-builder.Services.AddHttpClient("ApiCitasMedicas", client =>
-{
-    client.BaseAddress = new Uri("https://localhost:7119/"); // Reemplaza esto con la URL de tu API
-});
-
+builder.Services.AddScoped<PacienteDAL>();
 var app = builder.Build();
+app.AddPacienteEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

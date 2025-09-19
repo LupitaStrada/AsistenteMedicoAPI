@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AsistenteMedico.DTOs.PacienteDTOs
 {
-    internal class CreatePacienteDTOs
+    public class CreatePacienteDTOs
     {
         [Display(Name = "Centro Medico")]
         [Required(ErrorMessage = "El campo centro medico es obligatorio")]
@@ -15,48 +15,48 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El campo Nombre no puede tener mas de 100 caracteres")]
-        public string PrimerNombre { get; set; }
+        public string PrimerNombre { get; set; } = string.Empty;
 
         [Display(Name = "Apellido")]
         [Required(ErrorMessage = "El campo Apellido es obligatorio")]
-        public string Apellido { get; set; }
+        public string Apellido { get; set; }= string.Empty;
 
         [Display(Name = "Telefono")]
         [Required(ErrorMessage = "El campo Telefono es obligatorio")]
-        public string Telefono { get; set; }
+        public string Telefono { get; set; }= string.Empty;
 
         [Display(Name = "Correo Electronico")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Display(Name = "Fecha de nacimiento")]
         [Required(ErrorMessage = "El campo Fecha de nacimiento es obligatorio")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
 
         [Display(Name = "Contacto de emergencia")]
-        public string ContactoEmergencia { get; set;}
+        public string? ContactoEmergencia { get; set;}
 
         [Display(Name = "Telefono de emergencia")]
-        public string TelefonoEmergencia { get; set; }
+        public string? TelefonoEmergencia { get; set; }
 
         [Display(Name = "Recibir mensajes")]
-        public string RecibirSms { get; set; }
+        public string? RecibirSms { get; set; }
         [Display(Name = "Recibir Emails")]
-        public string RecibirEmails { get; set; }
+        public string? RecibirEmails { get; set; }
     
         [Display(Name = "Numero de paciente")]
-        public string NumeroPaciente { get; set; }
+        public string? NumeroPaciente { get; set; }
 
         [Display(Name = "Estado Activo")]
-        public string EstadoActivo { get; set; }
+        public string? EstadoActivo { get; set; }
 
         [Display(Name = "Fecha de creacion")]
-        public string FechaCreacion { get; set; }
+        public string? FechaCreacion { get; set; }
 
         [Display(Name = "Fecha de actualizacion")]
-        public DateTime FechaActualizacion { get; set; }
+        public DateTime? FechaActualizacion { get; set; }
 
         [Display(Name = "Ultima Visita")]
-        public DateTime UltimaVisita { get; set; }
+        public DateTime? UltimaVisita { get; set; }
 
 
 

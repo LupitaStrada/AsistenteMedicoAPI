@@ -21,6 +21,11 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             Genero = getIdResultPacientesDTO.Genero;
             ContactoEmergencia = getIdResultPacientesDTO.ContactoEmergencia;
             TelefonoEmergencia = getIdResultPacientesDTO.TelefonoEmergencia;
+            FechaNacimiento = getIdResultPacientesDTO.FechaNacimiento;
+            Genero = getIdResultPacientesDTO.Genero;
+
+
+
         }
 
         // Constructor vacío para inicializar sin valores
@@ -32,6 +37,15 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             Telefono = string.Empty;
             Email = string.Empty;
             Genero = string.Empty;
+            ContactoEmergencia = string.Empty;
+            TelefonoEmergencia = string.Empty;
+            FechaNacimiento = null;
+            Genero = null;
+            TelefonoEmergencia = null;
+            ContactoEmergencia = null;
+            Email = null;
+            FechaNacimiento = null;
+
         }
 
         [Required(ErrorMessage = "El campo Id es obligatorio")]
@@ -64,5 +78,16 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 
         [Display(Name = "Teléfono de Emergencia")]
         public string? TelefonoEmergencia { get; set; }
+
+        [Display(Name = "Número de paciente")]
+        public string? numeroPaciente { get; set; }
+        [Display(Name = "Estado Activo")]
+
+        public string? EstadoActivo { get; set; }
+        [Display(Name = "Fecha de Actualización")]
+        public DateTime? FechaActualizacion { get; set; }
+        [Display(Name = "Última Visita")]
+        public DateTime? UltimaVisita { get; set; }
+
     }
 }
