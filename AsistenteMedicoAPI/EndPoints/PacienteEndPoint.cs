@@ -112,7 +112,7 @@ namespace AsistenteMedicoAPI.EndPoints
                     Apellido = pacienteDTO.Apellido,
                     Telefono = pacienteDTO.Telefono,
                     Email = pacienteDTO.Email,
-                    FechaNacimiento = pacienteDTO.FechaNacimiento.HasValue ? DateOnly.FromDateTime(pacienteDTO.FechaNacimiento.Value) : default, // Conversión explícita
+                    //FechaNacimiento = pacienteDTO.FechaNacimiento.HasValue ? DateOnly.FromDateTime(pacienteDTO.FechaNacimiento.Value) : default, // Conversión explícita
                     ContactoEmergencia = pacienteDTO.ContactoEmergencia,
                     TelefonoEmergencia = pacienteDTO.TelefonoEmergencia,
                     RecibirSms = pacienteExistente.RecibirSms,
@@ -132,19 +132,19 @@ namespace AsistenteMedicoAPI.EndPoints
                     return Results.StatusCode(500);
             });
 
-            app.MapPut("/paciente/updatenombre", async (UpdateNombrePacienteDTO paciente, PacienteDAL pacienteDAL) =>
-            {
-                var pacienteExistente = await pacienteDAL.GetById(paciente.Id);
-                //crear un objeto "customer" a partir de los datos proporcionados
-                 pacienteExistente.PrimerNombre = paciente.PrimerNombre;
+            ////app.MapPut("/paciente/updatenombre", async (UpdateNombrePacienteDTO paciente, PacienteDAL pacienteDAL) =>
+            //{
+            //    var pacienteExistente = await pacienteDAL.GetById(paciente.Id);
+            //    //crear un objeto "customer" a partir de los datos proporcionados
+            //     pacienteExistente.PrimerNombre = paciente.PrimerNombre;
 
 
-                int result = await pacienteDAL.Edit(pacienteExistente);
-                if (result != 0)
-                    return Results.Ok(result);
-                else
-                    return Results.StatusCode(500);
-            });
+            //    int result = await pacienteDAL.Edit(pacienteExistente);
+            //    if (result != 0)
+            //        return Results.Ok(result);
+            //    else
+            //        return Results.StatusCode(500);
+            //});
             //configurar un endpoint de tipo delete para eliminar un cliente por su ID
             app.MapDelete("/paciente/{id}", async (int id, PacienteDAL pacienteDAL) =>
             {

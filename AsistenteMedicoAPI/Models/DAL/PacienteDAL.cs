@@ -22,11 +22,12 @@ namespace AsistenteMedicoAPI.Models.DAL
             return await _context.SaveChangesAsync();
         }
         //metodo para obtener un paciente por su id
-        public async Task<Paciente> GetById(int id)
+        public async Task<Paciente?> GetById(int id)
         {
-            var pacientes = await _context.Pacientes.SingleOrDefaultAsync(s => s.Id == id);
-            return pacientes != null ? pacientes : new Paciente();
-
+            // El método ya devuelve null si no encuentra el paciente.
+            // Usar el signo de interrogación `?` en el tipo de retorno indica que
+            // el método puede devolver un valor nulo.
+            return await _context.Pacientes.SingleOrDefaultAsync(s => s.Id == id);
         }
         //Metodo para editar un paciente existente en la base de datos
         public async Task<int> Edit(Paciente pacientes)
@@ -48,11 +49,11 @@ namespace AsistenteMedicoAPI.Models.DAL
                 pacienteUpdate.TelefonoEmergencia = pacientes.TelefonoEmergencia;
                 pacienteUpdate.RecibirSms = pacientes.RecibirSms;
                 pacienteUpdate.RecibirEmail = pacientes.RecibirEmail;
-                pacienteUpdate.NumeroPaciente = pacientes.NumeroPaciente;
-                pacienteUpdate.EstaActivo = pacientes.EstaActivo;
-                pacienteUpdate.FechaCreacion = pacientes.FechaCreacion;
-                pacienteUpdate.FechaActualizacion = DateTime.Now;
-                pacienteUpdate.UltimaVisita = pacientes.UltimaVisita;
+                //pacienteUpdate.NumeroPaciente = pacientes.NumeroPaciente;
+                //pacienteUpdate.EstaActivo = pacientes.EstaActivo;
+                //pacienteUpdate.FechaCreacion = pacientes.FechaCreacion;
+                //pacienteUpdate.FechaActualizacion = DateTime.Now;
+                //pacienteUpdate.UltimaVisita = pacientes.UltimaVisita;
                 
                 result = await _context.SaveChangesAsync();
             }

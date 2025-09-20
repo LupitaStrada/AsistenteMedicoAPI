@@ -17,35 +17,32 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             Apellido = getIdResultPacientesDTO.Apellido;
             Telefono = getIdResultPacientesDTO.Telefono;
             Email = getIdResultPacientesDTO.Email;
-            FechaNacimiento = getIdResultPacientesDTO.FechaNacimiento;
-            Genero = getIdResultPacientesDTO.Genero;
+            //FechaNacimiento = getIdResultPacientesDTO.FechaNacimiento;
+            //Genero = getIdResultPacientesDTO.Genero;
             ContactoEmergencia = getIdResultPacientesDTO.ContactoEmergencia;
             TelefonoEmergencia = getIdResultPacientesDTO.TelefonoEmergencia;
-            FechaNacimiento = getIdResultPacientesDTO.FechaNacimiento;
-            Genero = getIdResultPacientesDTO.Genero;
+            
+            
+     
+          
 
 
 
         }
 
         // Constructor vacío para inicializar sin valores
-        public EditPacienteDTO()
+        public class EditarPacienteDTO
         {
-            Id = 0;
-            PrimerNombre = string.Empty;
-            Apellido = string.Empty;
-            Telefono = string.Empty;
-            Email = string.Empty;
-            Genero = string.Empty;
-            ContactoEmergencia = string.Empty;
-            TelefonoEmergencia = string.Empty;
-            FechaNacimiento = null;
-            Genero = null;
-            TelefonoEmergencia = null;
-            ContactoEmergencia = null;
-            Email = null;
-            FechaNacimiento = null;
-
+            public int Id { get; set; }
+            public string PrimerNombre { get; set; }
+            public string Apellido { get; set; }
+            public string Telefono { get; set; }
+            public string? Email { get; set; }
+            public DateTime? FechaNacimiento { get; set; }
+            public string? ContactoEmergencia { get; set; }
+            public string? TelefonoEmergencia { get; set; }
+            public bool? RecibirSms { get; set; }
+            public bool? RecibirEmail { get; set; }
         }
 
         [Required(ErrorMessage = "El campo Id es obligatorio")]
@@ -67,11 +64,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [EmailAddress(ErrorMessage = "El campo Email no tiene un formato válido")]
         public string? Email { get; set; }
 
-        [Display(Name = "Fecha de Nacimiento")]
-        public DateTime? FechaNacimiento { get; set; }
 
-        [Display(Name = "Género")]
-        public string? Genero { get; set; }
 
         [Display(Name = "Contacto de Emergencia")]
         public string? ContactoEmergencia { get; set; }
@@ -79,15 +72,14 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Display(Name = "Teléfono de Emergencia")]
         public string? TelefonoEmergencia { get; set; }
 
-        [Display(Name = "Número de paciente")]
-        public string? numeroPaciente { get; set; }
-        [Display(Name = "Estado Activo")]
 
-        public string? EstadoActivo { get; set; }
-        [Display(Name = "Fecha de Actualización")]
-        public DateTime? FechaActualizacion { get; set; }
-        [Display(Name = "Última Visita")]
-        public DateTime? UltimaVisita { get; set; }
+        [Display(Name = "Recibir Mensajes")]
+        public bool? RecibirSms { get; set; }
+
+        [Display(Name = "Recibir Email")]
+        public bool? RecibirEmail { get; set; }
+
+
 
     }
 }
