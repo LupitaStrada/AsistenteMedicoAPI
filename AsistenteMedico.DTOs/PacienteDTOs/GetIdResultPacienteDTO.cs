@@ -25,7 +25,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         public string Email { get; set; }
 
         [Display(Name = "Correo electronico")]
-        public DateTime? FechaNacimiento { get; set; }
+        public DateOnly? FechaNacimiento { get; set; }
 
         [Display(Name = "Fecha de nacimiento")]
         public string Genero { get; set; }

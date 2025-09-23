@@ -17,7 +17,7 @@ public partial class Paciente
 
     public string? Email { get; set; }
 
-    public DateOnly? FechaNacimiento { get; set; }
+    public DateTime? FechaNacimiento { get; set; }
 
     public string? Genero { get; set; }
 
@@ -29,7 +29,7 @@ public partial class Paciente
 
     public bool? RecibirEmail { get; set; }
 
-    public string? NumeroPaciente { get; set; }
+    public string NumeroPaciente { get; set; }
 
     public bool? EstaActivo { get; set; }
 

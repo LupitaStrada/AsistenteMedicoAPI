@@ -38,7 +38,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             public string Apellido { get; set; }
             public string Telefono { get; set; }
             public string? Email { get; set; }
-            public DateTime? FechaNacimiento { get; set; }
+            public DateOnly? FechaNacimiento { get; set; }
             public string? ContactoEmergencia { get; set; }
             public string? TelefonoEmergencia { get; set; }
             public bool? RecibirSms { get; set; }

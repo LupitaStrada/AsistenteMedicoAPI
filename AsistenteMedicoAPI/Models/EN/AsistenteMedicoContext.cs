@@ -259,6 +259,7 @@ public partial class AsistenteMedicoContext : DbContext
                 .HasForeignKey(d => d.CentroId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("pacientes_ibfk_1");
+            entity.HasIndex(e => e.NumeroPaciente).IsUnique();
         });
 
         modelBuilder.Entity<TiposCita>(entity =>

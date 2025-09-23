@@ -14,7 +14,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         public int CentroId { get; set; }
 
         [Display(Name = "Nombre")]
-        [Required(ErrorMessage = "El campo Nombre no puede tener mas de 100 caracteres")]
+        [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public string PrimerNombre { get; set; } = string.Empty;
 
         [Display(Name = "Apellido")]
@@ -32,6 +32,8 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Required(ErrorMessage = "El campo Fecha de nacimiento es obligatorio")]
         public DateTime? FechaNacimiento { get; set; }
 
+   
+
         [Display(Name = "Contacto de emergencia")]
         public string? ContactoEmergencia { get; set;}
 
@@ -39,28 +41,12 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         public string? TelefonoEmergencia { get; set; }
 
         [Display(Name = "Recibir mensajes")]
-        public string? RecibirSms { get; set; }
+        public bool? RecibirSms { get; set; }
         [Display(Name = "Recibir Emails")]
-        public string? RecibirEmails { get; set; }
+        public bool? RecibirEmails { get; set; }
     
         [Display(Name = "Numero de paciente")]
         public string? NumeroPaciente { get; set; }
-
-        [Display(Name = "Estado Activo")]
-        public string? EstadoActivo { get; set; }
-
-        [Display(Name = "Fecha de creacion")]
-        public string? FechaCreacion { get; set; }
-
-        [Display(Name = "Fecha de actualizacion")]
-        public DateTime? FechaActualizacion { get; set; }
-
-        [Display(Name = "Ultima Visita")]
-        public DateTime? UltimaVisita { get; set; }
-
-
-
-
 
     }
 }
