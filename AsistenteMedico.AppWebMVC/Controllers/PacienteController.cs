@@ -1,82 +1,146 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AsistenteMedico.DTOs.PacienteDTOs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AsistenteMedico.AppWebMVC.Controllers
 {
     public class PacienteController : Controller
     {
-        // GET: PacienteController
-        public ActionResult Index()
+        private readonly HttpClient _httpClientAsistMedAPI;
+        // GET: CustomerController
+        public PacienteController(IHttpClientFactory httpClientFactory)
         {
-            return View();
+            _httpClientAsistMedAPI = httpClientFactory.CreateClient("AsistMedAPI");
         }
 
-        // GET: PacienteController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Index(SearchQueryPacienteDTO searchQueryPacienteDTO, int CountRow = 0)
         {
-            return View();
+            //configuracion de valores por defecto para la busqueda
+            if (searchQueryPacienteDTO.SendRowCount == 0)
+                searchQueryPacienteDTO.SendRowCount = 2;
+            if (searchQueryPacienteDTO.Take == 0)
+                searchQueryPacienteDTO.Take = 10;
+            var result = new SearchQueryPacienteDTO();
+
+            //realizar una solicitud http post para buscar clientes en el servicio web
+            var response = await _httpClientAsistMedAPI.PostAsJsonAsync("/paciente/search", searchQueryPacienteDTO);
+            if (response.IsSuccessStatusCode)
+                result = await response.Content.ReadFromJsonAsync<SearchQueryPacienteDTO>();
+            result = result != null ? result : new SearchQueryPacienteDTO();
+
+            if (result.CountRow == 0 && searchQueryPacienteDTO.SendRowCount == 1)
+                result.CountRow = CountRow;
+            ViewBag.CountRow = result.CountRow;
+            searchQueryPacienteDTO.SendRowCount = 0;
+            ViewBag.SearchQuery = searchQueryPacienteDTO;
+            return View(result);
         }
 
-        // GET: PacienteController/Create
+        // GET: CustomerController/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            var result = new GetIdResultPacienteDTO();
+            //realizar una solicitud http get para obtener los detalles del cliente por ID
+            var response = await _httpClientAsistMedAPI.GetAsync("/paciente/" + id);
+            if (response.IsSuccessStatusCode)
+                result = await response.Content.ReadFromJsonAsync<GetIdResultPacienteDTO>();
+
+            return View(result ?? new GetIdResultPacienteDTO());
+        }
+
+        // GET: CustomerController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PacienteController/Create
+        // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(CreatePacienteDTOs createPacienteDTOs)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _httpClientAsistMedAPI.PostAsJsonAsync("/paciente", createPacienteDTOs);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewBag.Error = "Error al intentar guardar el registro";
+                return View();
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message;
                 return View();
             }
         }
 
-        // GET: PacienteController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: CustomerController/Edit/5
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var result = new GetIdResultPacienteDTO();
+            var response = await _httpClientAsistMedAPI.GetAsync("/paciente/" + id);
+            if (response.IsSuccessStatusCode)
+                result = await response.Content.ReadFromJsonAsync<GetIdResultPacienteDTO>();
+
+            return View(new EditPacienteDTO(result ?? new GetIdResultPacienteDTO()));
         }
 
-        // POST: PacienteController/Edit/5
+        // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, EditPacienteDTO editPacienteDTO)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _httpClientAsistMedAPI.PutAsJsonAsync("/paciente", editPacienteDTO);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewBag.Error = "error al intentar editar el registro";
+                return View();
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = ex.Message;
                 return View();
             }
         }
 
-        // GET: PacienteController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: CustomerController/Delete/5
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var result = new GetIdResultPacienteDTO();
+            var response = await _httpClientAsistMedAPI.GetAsync("/paciente/" + id);
+            if (response.IsSuccessStatusCode)
+                result = await response.Content.ReadFromJsonAsync<GetIdResultPacienteDTO>();
+            return View(result ?? new GetIdResultPacienteDTO());
         }
 
-        // POST: PacienteController/Delete/5
+        // POST: CustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id, GetIdResultPacienteDTO GetIdResultPacienteDTO)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                //realizar una solicitud http delete para eliminar un cliente por id
+                var response = await _httpClientAsistMedAPI.DeleteAsync("/paciente/" + id);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewBag.Error = "error al intentar eliminar el registro";
+                return View(GetIdResultPacienteDTO);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                {
+                    ViewBag.Error = ex.Message;
+                    return View(GetIdResultPacienteDTO);
+                }
             }
         }
     }
