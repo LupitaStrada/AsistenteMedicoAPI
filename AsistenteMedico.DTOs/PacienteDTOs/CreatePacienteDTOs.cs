@@ -32,8 +32,6 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Required(ErrorMessage = "El campo Fecha de nacimiento es obligatorio")]
         public DateTime? FechaNacimiento { get; set; }
 
-   
-
         [Display(Name = "Contacto de emergencia")]
         public string? ContactoEmergencia { get; set;}
 

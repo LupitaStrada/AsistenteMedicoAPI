@@ -21,12 +21,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             //Genero = getIdResultPacientesDTO.Genero;
             ContactoEmergencia = getIdResultPacientesDTO.ContactoEmergencia;
             TelefonoEmergencia = getIdResultPacientesDTO.TelefonoEmergencia;
-            
-            
-     
-          
-
-
+                     
 
         }
 
@@ -44,7 +39,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             public bool? RecibirSms { get; set; }
             public bool? RecibirEmail { get; set; }
         }
-
+         
         [Required(ErrorMessage = "El campo Id es obligatorio")]
         public int Id { get; set; }
 
@@ -63,8 +58,6 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "El campo Email no tiene un formato válido")]
         public string? Email { get; set; }
-
-
 
         [Display(Name = "Contacto de Emergencia")]
         public string? ContactoEmergencia { get; set; }

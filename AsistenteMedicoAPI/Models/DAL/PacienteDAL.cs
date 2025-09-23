@@ -62,15 +62,18 @@ namespace AsistenteMedicoAPI.Models.DAL
         //metodo para eliminar un producto de la base de datos por su ID
         public async Task<int> Delete(int id)
         {
-            int result = 0;
+            // Obtiene el paciente. Si no lo encuentra, devuelve null.
             var pacienteDelete = await GetById(id);
-            if (pacienteDelete.Id > 0)
+
+            // Si el objeto no es nulo, significa que el paciente fue encontrado.
+            if (pacienteDelete != null)
             {
-                //elimina el producto de la base de datos
                 _context.Pacientes.Remove(pacienteDelete);
-                result = await _context.SaveChangesAsync();
+                return await _context.SaveChangesAsync();
             }
-            return result;
+
+            // Si el paciente no se encontró, devolvemos 0 para indicar que no hubo cambios.
+            return 0;
         }
         // Replacing the problematic line in the Query method  
         private IQueryable<Paciente> Query(Paciente paciente)
