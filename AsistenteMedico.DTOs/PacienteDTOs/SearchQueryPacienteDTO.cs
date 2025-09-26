@@ -27,5 +27,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 
         // Campo para indicar si se debe devolver el total de registros
         public byte SendRowCount { get; set; }
+        // Añade esta línea si no existe.
+        public int CountRow { get; set; }
     }
 }

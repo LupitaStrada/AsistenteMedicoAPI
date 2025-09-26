@@ -44,7 +44,7 @@ namespace AsistenteMedico.AppWebMVC.Controllers
             var response = await _httpClientAsistMedAPI.GetAsync("/paciente/" + id);
             if (response.IsSuccessStatusCode)
                 result = await response.Content.ReadFromJsonAsync<GetIdResultPacienteDTO>();
-
+             r
             return View(result ?? new GetIdResultPacienteDTO());
         }
 
