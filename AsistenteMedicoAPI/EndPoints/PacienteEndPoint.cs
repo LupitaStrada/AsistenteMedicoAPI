@@ -21,6 +21,7 @@ namespace AsistenteMedicoAPI.EndPoints
                 var pacientes = new List<Paciente>();
                 int countRow = 0;
                 if (pacienteDTO.SendRowCount == 2)
+
                 {
                     pacientes = await pacienteDAL.Search(paciente, skip: pacienteDTO.Skip, take: pacienteDTO.Take);
 

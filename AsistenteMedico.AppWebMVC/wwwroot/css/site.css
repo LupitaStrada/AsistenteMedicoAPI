@@ -1,22 +1,44 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* 1. ESTILOS GENERALES Y FUENTE */
 body {
-  margin-bottom: 60px;
+    background-color: #f8f9fa; /* Fondo gris claro */
+}
+
+/* 2. ESTILO PARA LA BARRA MORADA SUPERIOR */
+/* Se aplica al div que creamos en el Layout */
+.navbar-top-color {
+    background-color: #5d5c9f !important; /* El morado oscuro del prototipo */
+    color: white;
+    padding: 15px 0;
+}
+
+/* 3. ESTILO PARA LAS CARDS (Dashboard y Listado de Pacientes) */
+.card-metric {
+    /* Estilo base para las tarjetas de métricas */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* 4. Estilos específicos para las 4 métricas del Dashboard */
+.metric-pacientes {
+    background-color: #5d5c9f; /* Morado, como "Total Pacientes" */
+}
+
+.metric-citas {
+    background-color: #7977c0; /* Azul/Morado más claro */
+}
+
+/* Define estilos para los otros dos cuadros si los necesitas */
+/* .metric-medicos { background-color: ... } */
+/* .metric-pendientes { background-color: ... } */
+
+/* 5. ESTILOS PARA LOS BOTONES DE NAVEGACIÓN ACTIVO */
+/* Esto asegura que el botón "Pacientes" se vea correctamente activo */
+.navbar-nav .btn-primary {
+    background-color: #5d5c9f;
+    border-color: #5d5c9f;
+    color: white;
 }
