@@ -20,13 +20,13 @@ namespace AsistenteMedico.AppWebMVC.Controllers
                 searchQueryPacienteDTO.SendRowCount = 2;
             if (searchQueryPacienteDTO.Take == 0)
                 searchQueryPacienteDTO.Take = 10;
-            var result = new SearchQueryPacienteDTO();
+            var result = new SearchResultPacienteDTO();
 
             //realizar una solicitud http post para buscar clientes en el servicio web
             var response = await _httpClientAsistMedAPI.PostAsJsonAsync("/paciente/search", searchQueryPacienteDTO);
             if (response.IsSuccessStatusCode)
-                result = await response.Content.ReadFromJsonAsync<SearchQueryPacienteDTO>();
-            result = result != null ? result : new SearchQueryPacienteDTO();
+                result = await response.Content.ReadFromJsonAsync<SearchResultPacienteDTO>();
+            result = result != null ? result : new SearchResultPacienteDTO();
 
             if (result.CountRow == 0 && searchQueryPacienteDTO.SendRowCount == 1)
                 result.CountRow = CountRow;

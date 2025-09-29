@@ -1,5 +1,119 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AsistenteMedico.DTOs.PacienteDTOs.SearchQueryPacienteDTO
+
 @{
+    // Los datos deben venir del modelo, no del ViewBag, para mantener la coherencia.
+    // Usamos el valor del modelo si está disponible, sino asumimos 0.
+    int totalRegistros = Model.CountRow;
+    int totalPaginas = (int)Math.Ceiling((double)totalRegistros / Model.Take);
+
+    // Calcula la página actual (para resaltar en la paginación)
+    int paginaActual = (Model.Skip / Model.Take) + 1;
 }
+
+<div class="card shadow-sm border-0 mb-4">
+
+    <div class="card-header bg-white">
+        <h5 class="card-title mb-0">Filtros de Búsqueda de Pacientes</h5>
+    </div>
+
+    <div class="card-body">
+
+        <form asp-action="Index" method="get">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="CountRow" type="hidden" name="CountRow" value="@totalRegistros" />
+            <input asp-for="Skip" type="hidden" id="txtSkip" />
+
+            <div class="row g-3 align-items-end mb-4">
+
+                <div class="col-md-4">
+                    <label asp-for="Nombre_Like" class="form-label"></label>
+                    <input asp-for="Nombre_Like" class="form-control" placeholder="Buscar por Primer Nombre..." />
+                    <span asp-validation-for="Nombre_Like" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="Telefono_Like" class="form-label"></label>
+                    <input asp-for="Telefono_Like" class="form-control" placeholder="Buscar por telefono..." />
+                    <span asp-validation-for="Telefono_Like" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-2">
+                    <label asp-for="Take" class="form-label"></label>
+                    <select asp-for="Take" class="form-select">
+                        @for (var i = 10; i <= 100; i += 10)
+                        {
+                            <option value="@i" selected="@(i == Model.Take)">@i</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Take" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" id="btnSearch" class="btn btn-primary w-100">
+                        <i class="fas fa-search me-1"></i> Buscar
+                    </button>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+
+                <span class="text-muted small mb-2 mb-md-0">
+                    Total registros: **@totalRegistros**
+                </span>
+
+                <nav aria-label="Navegación de Páginas">
+                    <ul class="pagination pagination-sm mb-0">
+                        @{
+                            int skipAnterior = Model.Skip > 0 ? Model.Skip - Model.Take : 0;
+                            int skipSiguiente = Model.Skip + Model.Take;
+                        }
+
+                        <li class="page-item @(Model.Skip == 0 ? "disabled" : "")">
+                            <a class="page-link" data-skip="@skipAnterior" href="#" onclick="paginacion(this)">Anterior</a>
+                        </li>
+
+                        @for (var i = 0; i < totalPaginas; i++)
+                        {
+                            int skip = i * Model.Take;
+                            int numPag = i + 1;
+
+                            <li class="page-item @(numPag == paginaActual ? "active" : "")">
+                                <a class="page-link" data-skip="@skip" href="#" onclick="paginacion(this)">@numPag</a>
+                            </li>
+                        }
+
+                        <li class="page-item @(Model.Skip >= (totalRegistros - Model.Take) ? "disabled" : "")">
+                            <a class="page-link" data-skip="@skipSiguiente" href="#" onclick="paginacion(this)">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="card-footer bg-light d-flex justify-content-end">
+        <a asp-action="Create" class="btn btn-success">
+            <i class="fas fa-plus-circle me-1"></i> Crear Nuevo Paciente
+        </a>
+    </div>
+</div>
+
+<script>
+    function paginacion(li) {
+        // Previene el comportamiento predeterminado del enlace
+        event.preventDefault();
+
+        const skip = li.getAttribute("data-skip");
+        const btnSearch = document.getElementById("btnSearch");
+        const txtSkip = document.getElementById("txtSkip");
+
+        // 1. Establece el nuevo valor de Skip
+        txtSkip.value = skip;
+
+        // 2. Simula el clic en el botón de búsqueda para enviar todo el formulario
+        // Nota: El campo SendRowCount ya no es necesario si siempre se asume 0 para el controlador.
+        btnSearch.click();
+    }
+</script>

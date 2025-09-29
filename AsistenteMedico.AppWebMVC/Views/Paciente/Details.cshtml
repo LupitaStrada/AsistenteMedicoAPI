@@ -1,0 +1,105 @@
+﻿@model AsistenteMedico.DTOs.PacienteDTOs.GetIdResultPacienteDTO
+
+@{
+    ViewData["Title"] = "Detalles del Paciente";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<div class="card shadow-sm border-0">
+
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0 text-primary">
+            @Model.PrimerNombre @Model.Apellido
+        </h5>
+
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning me-2">
+                <i class="fas fa-edit me-1"></i> Editar
+            </a>
+            <a asp-action="CreateCita" asp-route-pacienteid="@Model.Id" class="btn btn-success">
+                <i class="fas fa-calendar-plus me-1"></i> Nueva Cita
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <h6 class="text-secondary border-bottom pb-1 mb-3">Datos de Contacto</h6>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Id)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Id)</dd>
+                </dl>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Telefono)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Telefono)</dd>
+                </dl>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+                </dl>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Genero)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Genero)</dd>
+                </dl>
+
+            </div>
+
+            <div class="col-md-6">
+                <h6 class="text-secondary border-bottom pb-1 mb-3">Emergencia y Notificaciones</h6>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ContactoEmergencia)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.ContactoEmergencia)</dd>
+                </dl>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TelefonoEmergencia)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TelefonoEmergencia)</dd>
+                </dl>
+
+                <hr class="my-3" />
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">Recibir SMS</dt>
+                    <dd class="col-sm-8">
+                        @* Asume que tienes las propiedades booleanas RecibirSms y RecibirEmails en GetIdResultPacienteDTO *@
+                        @* @(Model.RecibirSms ? "Sí (✅)" : "No (❌)") *@
+                        [PENDIENTE: Aplicar lógica de booleano]
+                    </dd>
+                </dl>
+
+                <dl class="row mb-1">
+                    <dt class="col-sm-4">Recibir Emails</dt>
+                    <dd class="col-sm-8">
+                        @* @(Model.RecibirEmails ? "Sí (✅)" : "No (❌)") *@
+                        [PENDIENTE: Aplicar lógica de booleano]
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card-footer bg-light d-flex justify-content-between">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Volver al Listado
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+            <i class="fas fa-trash me-1"></i> Eliminar Paciente
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        // No se necesitan scripts de validación aquí
+    }
+}

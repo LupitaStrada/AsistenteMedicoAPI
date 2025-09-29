@@ -1,0 +1,74 @@
+﻿@model AsistenteMedico.DTOs.PacienteDTOs.GetIdResultPacienteDTO
+
+@{
+    ViewData["Title"] = "Eliminar Paciente";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<div class="alert alert-danger shadow-sm border-0" role="alert">
+    <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i> Confirmación Requerida</h4>
+    <p class="mb-0">
+        **¡Advertencia!** Está a punto de eliminar al paciente **@Model.PrimerNombre @Model.Apellido** permanentemente. Esta acción no se puede deshacer.
+    </p>
+    <hr>
+    <p class="mb-0">¿Está absolutamente seguro de que desea eliminar este registro?</p>
+</div>
+
+<div class="card shadow-sm border-0 mb-4">
+
+    <div class="card-header bg-warning-subtle">
+        <h5 class="card-title mb-0">Información del Paciente</h5>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Id)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Id)</dd>
+
+                    <dt class="col-sm-4">Nombre</dt>
+                    <dd class="col-sm-8">@Model.PrimerNombre @Model.Apellido</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Telefono)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Telefono)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Email)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Genero)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Genero)</dd>
+                </dl>
+            </div>
+
+            <div class="col-md-6">
+                <dl class="row">
+                    <h6 class="text-secondary border-bottom pb-1 mb-3">Datos de Emergencia</h6>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ContactoEmergencia)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.ContactoEmergencia)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TelefonoEmergencia)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TelefonoEmergencia)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-light">
+        <form asp-action="Delete" class="d-flex justify-content-between">
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt me-1"></i> Confirmar Eliminación
+            </button>
+
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-times me-1"></i> Cancelar y Volver al Listado
+            </a>
+        </form>
+    </div>
+</div>

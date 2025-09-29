@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SearchResultPacienteDTO.PacienteDTO>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(item => item.PrimerNombre)
+			</th>
+			<th>
+				@Html.DisplayNameFor(item => item.Apellido)
+			</th>
+			<th>
+				@Html.DisplayNameFor(item => item.Telefono)
+			</th>
+			<th>
+				@Html.DisplayNameFor(item => item.Email)
+			</th>
+			
+			<th>Acciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.PrimerNombre)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Apellido)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Telefono)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Email)
+				</td>
+			
+				<td>
+					@Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+					@Html.ActionLink("Ver", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+					@Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
