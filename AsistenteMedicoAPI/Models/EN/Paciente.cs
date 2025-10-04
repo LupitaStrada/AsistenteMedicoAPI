@@ -25,9 +25,9 @@ public partial class Paciente
 
     public string? TelefonoEmergencia { get; set; }
 
-    public bool? RecibirSms { get; set; }
+    public bool RecibirSms { get; set; }
 
-    public bool? RecibirEmail { get; set; }
+    public bool RecibirEmail { get; set; }
 
     public string NumeroPaciente { get; set; }
 

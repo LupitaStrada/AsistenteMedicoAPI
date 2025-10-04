@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace AsistenteMedico.AppWebMVC.Controllers
 {
     public class PacienteController : Controller
@@ -23,11 +24,13 @@ namespace AsistenteMedico.AppWebMVC.Controllers
             var result = new SearchResultPacienteDTO();
 
             //realizar una solicitud http post para buscar clientes en el servicio web
+            
             var response = await _httpClientAsistMedAPI.PostAsJsonAsync("/paciente/search", searchQueryPacienteDTO);
             if (response.IsSuccessStatusCode)
                 result = await response.Content.ReadFromJsonAsync<SearchResultPacienteDTO>();
             result = result != null ? result : new SearchResultPacienteDTO();
 
+            
             if (result.CountRow == 0 && searchQueryPacienteDTO.SendRowCount == 1)
                 result.CountRow = CountRow;
             ViewBag.CountRow = result.CountRow;

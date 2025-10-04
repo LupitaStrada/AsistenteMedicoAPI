@@ -9,7 +9,11 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 {
     public class EditPacienteDTO
     {
-        // Constructor que inicializa el DTO desde una clase de resultado de obtención de datos
+        // ------------------------------------------------------------------
+        // CONSTRUCTOR DE INICIALIZACIÓN (Usado típicamente por el GET)
+        // ------------------------------------------------------------------
+        // Nota: Asumo que esto estaba comentado o lo vas a usar. Lo dejo como ejemplo.
+
         public EditPacienteDTO(GetIdResultPacienteDTO getIdResultPacientesDTO)
         {
             Id = getIdResultPacientesDTO.Id;
@@ -17,35 +21,29 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             Apellido = getIdResultPacientesDTO.Apellido;
             Telefono = getIdResultPacientesDTO.Telefono;
             Email = getIdResultPacientesDTO.Email;
-            //FechaNacimiento = getIdResultPacientesDTO.FechaNacimiento;
-            //Genero = getIdResultPacientesDTO.Genero;
             ContactoEmergencia = getIdResultPacientesDTO.ContactoEmergencia;
             TelefonoEmergencia = getIdResultPacientesDTO.TelefonoEmergencia;
-                     
-
         }
 
-        // Constructor vacío para inicializar sin valores
-        public class EditarPacienteDTO
+
+        // ------------------------------------------------------------------
+        // 💡 SOLUCIÓN: CONSTRUCTOR VACÍO REQUERIDO POR MODEL BINDING (POST/PUT)
+        // ------------------------------------------------------------------
+        // Esto resuelve el error "must have a parameterless constructor"
+        public EditPacienteDTO()
         {
-            public int Id { get; set; }
-            public string PrimerNombre { get; set; }
-            public string Apellido { get; set; }
-            public string Telefono { get; set; }
-            public string? Email { get; set; }
-            public DateOnly? FechaNacimiento { get; set; }
-            public string? ContactoEmergencia { get; set; }
-            public string? TelefonoEmergencia { get; set; }
-            public bool? RecibirSms { get; set; }
-            public bool? RecibirEmail { get; set; }
         }
-         
+
+        // ------------------------------------------------------------------
+        // PROPIEDADES CON DATA ANNOTATIONS
+        // ------------------------------------------------------------------
         [Required(ErrorMessage = "El campo Id es obligatorio")]
         public int Id { get; set; }
 
         [Display(Name = "Primer Nombre")]
         [Required(ErrorMessage = "El campo Primer Nombre es obligatorio")]
         public string PrimerNombre { get; set; }
+
 
         [Display(Name = "Apellido")]
         [Required(ErrorMessage = "El campo Apellido es obligatorio")]
@@ -54,7 +52,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Display(Name = "Teléfono")]
         [Required(ErrorMessage = "El campo Teléfono es obligatorio")]
         public string Telefono { get; set; }
-
+ 
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "El campo Email no tiene un formato válido")]
         public string? Email { get; set; }
@@ -65,14 +63,10 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Display(Name = "Teléfono de Emergencia")]
         public string? TelefonoEmergencia { get; set; }
 
-
         [Display(Name = "Recibir Mensajes")]
-        public bool? RecibirSms { get; set; }
+        public bool RecibirSms { get; set; }
 
         [Display(Name = "Recibir Email")]
-        public bool? RecibirEmail { get; set; }
-
-
-
+        public bool RecibirEmail { get; set; }
     }
 }

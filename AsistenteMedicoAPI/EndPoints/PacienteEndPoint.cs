@@ -85,8 +85,8 @@ namespace AsistenteMedicoAPI.EndPoints
                     FechaNacimiento = pacienteDTO.FechaNacimiento, 
                     ContactoEmergencia = pacienteDTO.ContactoEmergencia,
                     TelefonoEmergencia = pacienteDTO.TelefonoEmergencia,
-                    RecibirSms = pacienteDTO.RecibirSms,
-                    RecibirEmail = pacienteDTO.RecibirEmails,
+                    //RecibirSms = pacienteDTO.RecibirSms,
+                    //RecibirEmail = pacienteDTO.RecibirEmails,
                     NumeroPaciente = pacienteDTO.NumeroPaciente,
                     EstaActivo = true,
                     FechaCreacion = DateTime.Now,
@@ -105,25 +105,13 @@ namespace AsistenteMedicoAPI.EndPoints
             app.MapPut("/paciente", async (EditPacienteDTO pacienteDTO, PacienteDAL pacienteDAL) =>
             {
                 var pacienteExistente = await pacienteDAL.GetById(pacienteDTO.Id);
-                //crear un objeto "customer" a partir de los datos proporcionados
-                var paciente = new Paciente
-                {
-                    Id = pacienteDTO.Id,
-                    PrimerNombre = pacienteDTO.PrimerNombre,
-                    Apellido = pacienteDTO.Apellido,
-                    Telefono = pacienteDTO.Telefono,
-                    Email = pacienteDTO.Email,
-                    //FechaNacimiento = pacienteDTO.FechaNacimiento.HasValue ? DateOnly.FromDateTime(pacienteDTO.FechaNacimiento.Value) : default, // Conversión explícita
-                    ContactoEmergencia = pacienteDTO.ContactoEmergencia,
-                    TelefonoEmergencia = pacienteDTO.TelefonoEmergencia,
-                    RecibirSms = pacienteExistente.RecibirSms,
-                    RecibirEmail = pacienteExistente.RecibirEmail,
-                    NumeroPaciente = null,
-                    EstaActivo = pacienteExistente.EstaActivo,
-                    FechaCreacion = pacienteExistente.FechaCreacion,
-                    FechaActualizacion = DateTime.Now,
-                    UltimaVisita = null
-                };
+                pacienteExistente.Apellido = pacienteDTO.Apellido;
+                pacienteExistente.PrimerNombre = pacienteDTO.PrimerNombre;
+                pacienteExistente.Telefono = pacienteDTO.Telefono;
+                pacienteExistente.Email = pacienteDTO.Email;
+                pacienteExistente.ContactoEmergencia = pacienteDTO.ContactoEmergencia;
+                pacienteExistente.TelefonoEmergencia = pacienteDTO.TelefonoEmergencia;
+                pacienteExistente.FechaActualizacion = DateTime.Now;
               
 
                 int result = await pacienteDAL.Edit(pacienteExistente);
