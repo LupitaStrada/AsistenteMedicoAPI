@@ -39,12 +39,17 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         public string? TelefonoEmergencia { get; set; }
 
         [Display(Name = "Recibir mensajes")]
-        public bool? RecibirSms { get; set; }
+        public bool RecibirSms { get; set; }
         [Display(Name = "Recibir Emails")]
-        public bool? RecibirEmails { get; set; }
+        public bool RecibirEmails { get; set; }
     
         [Display(Name = "Numero de paciente")]
+        [Required(ErrorMessage = "El campo Numero de paciente es obligatorio")]
+        [MaxLength(10, ErrorMessage = "El campo Número de Paciente no puede tener más de 10 caracteres.")]
         public string? NumeroPaciente { get; set; }
+        [Display(Name = "Apellido")]
+        [Required(ErrorMessage = "El campo Apellido es obligatorio")]
+        public string? Genero { get; set; }
 
     }
 }

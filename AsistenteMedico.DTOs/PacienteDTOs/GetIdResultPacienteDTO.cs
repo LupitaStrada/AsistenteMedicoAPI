@@ -25,7 +25,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         public string Email { get; set; }
 
         [Display(Name = "Correo electronico")]
-        public DateOnly? FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
 
         [Display(Name = "Fecha de nacimiento")]
         public string Genero { get; set; }
@@ -36,7 +36,7 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 
         [Display(Name = "Contacto de emergencia")]
         public string TelefonoEmergencia { get; set; }
-
+      
      
     }
 }

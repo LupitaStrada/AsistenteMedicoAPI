@@ -65,6 +65,11 @@ namespace AsistenteMedicoAPI.EndPoints
                     PrimerNombre = paciente.PrimerNombre,                
                     Telefono = paciente.Telefono,
                     Email = paciente.Email,
+                    FechaNacimiento = paciente.FechaNacimiento,
+                    Apellido = paciente.Apellido,
+                    Genero = paciente.Genero,
+                    ContactoEmergencia = paciente.ContactoEmergencia,
+                    TelefonoEmergencia = paciente.TelefonoEmergencia,
                 };
                 if (pacienteResult.Id > 0)
                     return Results.Ok(pacienteResult);

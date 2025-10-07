@@ -56,12 +56,7 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center flex-wrap">
-
-                <span class="text-muted small mb-2 mb-md-0">
-                    Total registros: **@totalRegistros**
-                </span>
-
+            <div class="d-flex justify-content-end align-items-center flex-wrap mb-2">
                 <nav aria-label="Navegación de Páginas">
                     <ul class="pagination pagination-sm mb-0">
                         @{
@@ -90,6 +85,9 @@
                 </nav>
             </div>
 
+            <div class="text-muted small">
+                Total registros: @totalRegistros
+            </div>
         </form>
     </div>
 
@@ -99,21 +97,22 @@
         </a>
     </div>
 </div>
-
 <script>
     function paginacion(li) {
-        // Previene el comportamiento predeterminado del enlace
+        // Previene el comportamiento por defecto del enlace (opcional si usas 'return false;')
         event.preventDefault();
-
+        // 1. Obtener el valor 'skip' del atributo data-skip
         const skip = li.getAttribute("data-skip");
+        // 2. Obtener referencias a los elementos una sola vez
         const btnSearch = document.getElementById("btnSearch");
         const txtSkip = document.getElementById("txtSkip");
-
-        // 1. Establece el nuevo valor de Skip
+        const txtSendRowCount = document.getElementById("txtSendRowCount"); // Asumo que este campo existe
+        // 3. Asignar los nuevos valores a los campos ocultos
         txtSkip.value = skip;
-
-        // 2. Simula el clic en el botón de búsqueda para enviar todo el formulario
-        // Nota: El campo SendRowCount ya no es necesario si siempre se asume 0 para el controlador.
+        // 4. Asignar el valor de control.
+        // Asumo que este campo se usa para indicarle al controlador que NO debe recontar.
+        txtSendRowCount.value = 1;
+        // 5. Enviar el formulario haciendo clic en el botón de búsqueda
         btnSearch.click();
     }
 </script>
