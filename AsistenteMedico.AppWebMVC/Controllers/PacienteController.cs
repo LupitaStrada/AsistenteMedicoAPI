@@ -35,6 +35,7 @@ namespace AsistenteMedico.AppWebMVC.Controllers
                 result.CountRow = CountRow;
             ViewBag.CountRow = result.CountRow;
             searchQueryPacienteDTO.SendRowCount = 0;
+            searchQueryPacienteDTO.CountRow = result.CountRow;
             ViewBag.SearchQuery = searchQueryPacienteDTO;
             return View(result);
         }

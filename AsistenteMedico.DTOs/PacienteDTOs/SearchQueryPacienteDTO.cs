@@ -10,14 +10,16 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
     public class SearchQueryPacienteDTO
     {
         // Campos para la búsqueda por nombre, apellido, email, telefono
+
         [Display(Name = "Nombre o Apellido")]
-        public string Nombre_Like { get; set; }
+        public string? Nombre_Like { get; set; }
 
+        
         [Display(Name = "Teléfono")]
-        public string Telefono_Like { get; set; }
-
+        public string? Telefono_Like { get; set; }
+       
         [Display(Name = "Email")]
-        public string Email_Like { get; set; }
+        public string? Email_Like { get; set; }
 
         // Campos para paginación
         public int Skip { get; set; }

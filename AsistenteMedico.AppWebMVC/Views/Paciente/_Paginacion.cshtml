@@ -1,0 +1,68 @@
+﻿@model AsistenteMedico.DTOs.PacienteDTOs.SearchQueryPacienteDTO
+@{
+    // Los datos deben venir del modelo, no del ViewBag, para mantener la coherencia.
+    // Usamos el valor del modelo si está disponible, sino asumimos 0.
+    int totalRegistros = Model.CountRow;
+    int totalPaginas = (int)Math.Ceiling((double)totalRegistros / Model.Take);
+
+    // Calcula la página actual (para resaltar en la paginación)
+    int paginaActual = (Model.Skip / Model.Take) + 1;
+}
+
+<div class="card shadow-sm border-0 mb-4" style="overflow:auto">
+
+    <div class="card-body">
+
+        <div class="d-flex justify-content-end align-items-center flex-wrap mb-2" >
+            <nav aria-label="Navegación de Páginas">
+                <ul class="pagination pagination-sm mb-0">
+                    @{
+                        int skipAnterior = Model.Skip > 0 ? Model.Skip - Model.Take : 0;
+                        int skipSiguiente = Model.Skip + Model.Take;
+                    }
+
+                    <li class="page-item @(Model.Skip == 0 ? "disabled" : "")">
+                        <a class="page-link"  data-skip="@skipAnterior" href="#" onclick="paginacion(this)">Anterior</a>
+                    </li>
+
+                    @for (var i = 0; i < totalPaginas; i++)
+                    {
+                        int skip = i * Model.Take;
+                        int numPag = i + 1;
+
+                        <li class="page-item @(numPag == paginaActual ? "active" : "")">
+                            <a class="page-link" data-skip="@skip" href="#" onclick="paginacion(this)">@numPag</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.Skip >= (totalRegistros - Model.Take) ? "disabled" : "")">
+                        <a class="page-link" data-skip="@skipSiguiente" href="#" onclick="paginacion(this)">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="text-muted small">
+            Total registros: @totalRegistros
+        </div>
+    </div>
+</div>
+<script>
+    function paginacion(li) {
+        // Previene el comportamiento por defecto del enlace (opcional si usas 'return false;')
+        event.preventDefault();
+        // 1. Obtener el valor 'skip' del atributo data-skip
+        const skip = li.getAttribute("data-skip");
+        // 2. Obtener referencias a los elementos una sola vez
+        const btnSearch = document.getElementById("btnSearch");
+        const txtSkip = document.getElementById("txtSkip");
+        const txtSendRowCount = document.getElementById("txtSendRowCount"); // Asumo que este campo existe
+        // 3. Asignar los nuevos valores a los campos ocultos
+        txtSkip.value = skip;
+        // 4. Asignar el valor de control.
+        // Asumo que este campo se usa para indicarle al controlador que NO debe recontar.
+        txtSendRowCount.value = 1;
+        // 5. Enviar el formulario haciendo clic en el botón de búsqueda
+        btnSearch.click();
+    }
+</script>

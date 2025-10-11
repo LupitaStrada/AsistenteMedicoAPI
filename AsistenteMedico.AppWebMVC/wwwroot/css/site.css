@@ -1,16 +1,29 @@
+
+/* 1. ESTILO PARA LA SECCIÓN SUPERIOR (TÍTULO) */
+.header-top-color {
+    background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    color: white; /* Para que el texto sea blanco y legible */
+    padding: 15px 0;
+}
 /* 1. ESTILOS GENERALES Y FUENTE */
 body {
     background-color: #f8f9fa; /* Fondo gris claro */
 }
 
-/* 2. ESTILO PARA LA BARRA MORADA SUPERIOR */
-/* Se aplica al div que creamos en el Layout */
-.navbar-top-color {
-    background-color: #5d5c9f !important; /* El morado oscuro del prototipo */
-    color: white;
-    padding: 15px 0;
+/* 2. ESTILO PARA LA BARRA DE NAVEGACIÓN (BOTONES) */
+.nav-menu-gradiente {
+    /* Usamos !important para asegurar que sobrescribe cualquier clase de Bootstrap (como bg-white o bg-light) */
+    background: linear-gradient(to right, #667eea 0%, #764ba2 100%) !important;
+    /* Puedes añadir color de texto si los enlaces no se ven bien: */
+    /* color: white; */
 }
 
+/* 2. ESTILO PARA LA BARRA MORADA SUPERIOR */
+/* Se aplica al div que creamos en el Layout */
+    .nav-menu-gradiente .btn-outline-primary:hover {
+        color: white; /* Color de texto al pasar el ratón */
+        background-color: #667eea; /* Color de fondo al pasar el ratón */
+    }
 /* 3. ESTILO PARA LAS CARDS (Dashboard y Listado de Pacientes) */
 .card-metric {
     /* Estilo base para las tarjetas de métricas */
@@ -38,7 +51,58 @@ body {
 /* 5. ESTILOS PARA LOS BOTONES DE NAVEGACIÓN ACTIVO */
 /* Esto asegura que el botón "Pacientes" se vea correctamente activo */
 .navbar-nav .btn-primary {
-    background-color: #5d5c9f;
+    background-color: #6A5ACD;
     border-color: #5d5c9f;
     color: white;
+}
+.btn-primary {
+    /* Aplicamos el gradiente al fondo */
+    background-color: #6A5ACD;
+    /* Aseguramos que el texto sea blanco */
+    color: white !important;
+    /* Hacemos que el borde sea transparente para que el gradiente se vea bien */
+    border-color: transparent !important;
+}
+    /* Estilo al pasar el ratón (Hover) */
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:focus {
+        /* Puedes oscurecer ligeramente el gradiente al pasar el ratón para dar efecto de clic/interacción */
+        background: linear-gradient(to right, #5d6edc 0%, #6b3fa1 100%) !important;
+        color: white !important;
+        border-color: transparent !important;
+    }
+
+/* Define el estilo base del botón de contorno (btn-outline-primary) */
+.btn-outline-primary {
+    /* Usa el color inicial de tu gradiente (#667eea) para el texto */
+    color: #667eea !important;
+    /* Usa el mismo color para el borde */
+    border-color: #667eea !important;
+    /* Asegura que el fondo sea transparente por defecto */
+    background-color: transparent !important;
+}
+
+    /* Define el estilo al pasar el ratón (:hover) */
+    .btn-outline-primary:hover {
+        /* Al pasar el ratón, aplica el color del gradiente final para rellenar el botón */
+        background-color: #764ba2 !important;
+        /* El texto se vuelve blanco al rellenarse */
+        color: white !important;
+        /* El borde también se vuelve del color de relleno */
+        border-color: #764ba2 !important;
+    }
+
+/* **IMPORTANTE:** Para el botón relleno ('Pacientes'), también debe tener el gradiente */
+.btn-primary {
+    background: linear-gradient(to right, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border-color: transparent !important;
+}
+
+/*  botón secundario sea un gris limpio y neutro */
+.btn-secondary {
+    background-color: #6c757d !important; /* Gris Pizarra estándar */
+    border-color: #6c757d !important;
+    color: white !important;
 }
