@@ -5,9 +5,12 @@
     int totalRegistros = Model.CountRow;
     int totalPaginas = (int)Math.Ceiling((double)totalRegistros / Model.Take);
 
+
     // Calcula la página actual (para resaltar en la paginación)
     int paginaActual = (Model.Skip / Model.Take) + 1;
+
 }
+
 
 <div class="card shadow-sm border-0 mb-4" style="overflow:auto">
 
@@ -20,10 +23,11 @@
                         int skipAnterior = Model.Skip > 0 ? Model.Skip - Model.Take : 0;
                         int skipSiguiente = Model.Skip + Model.Take;
                     }
-
+          
                     <li class="page-item @(Model.Skip == 0 ? "disabled" : "")">
                         <a class="page-link"  data-skip="@skipAnterior" href="#" onclick="paginacion(this)">Anterior</a>
                     </li>
+             
 
                     @for (var i = 0; i < totalPaginas; i++)
                     {

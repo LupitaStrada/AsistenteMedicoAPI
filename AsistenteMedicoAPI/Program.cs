@@ -23,7 +23,8 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Registrar el contexto de la base de datos con Entity Framework Core
-builder.Services.AddDbContext<AsistenteMedicoContext>(options =>
+builder.Services.AddDbContext
+    <AsistenteMedicoContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
 

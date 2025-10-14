@@ -73,9 +73,9 @@ body {
         border-color: transparent !important;
     }
 
-/* Define el estilo base del botón de contorno (btn-outline-primary) */
+/* Define el estilo base del botón de contorno (btn-outline-primary) boton VER y menu */ 
 .btn-outline-primary {
-    /* Usa el color inicial de tu gradiente (#667eea) para el texto */
+
     color: #667eea !important;
     /* Usa el mismo color para el borde */
     border-color: #667eea !important;
