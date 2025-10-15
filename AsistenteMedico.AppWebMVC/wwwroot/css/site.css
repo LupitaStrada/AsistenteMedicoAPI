@@ -106,3 +106,30 @@ body {
     border-color: #6c757d !important;
     color: white !important;
 }
+
+/* ESTILOS DE LA BARRA DE SCROLL (Paginación) */
+
+.pagination-container-scroll {
+    /* Estilo para Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #a8a8a8 #f1f1f1;
+}
+
+    /* Estilos para navegadores basados en Webkit (Chrome, Edge, Safari) */
+    .pagination-container-scroll::-webkit-scrollbar {
+        height: 8px; /* Altura/Grosor de la barra */
+    }
+
+    .pagination-container-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Fondo de la pista */
+        border-radius: 4px;
+    }
+
+    .pagination-container-scroll::-webkit-scrollbar-thumb {
+        background: #a8a8a8; /* Color de la barra que se mueve (el "pulgar") */
+        border-radius: 4px;
+    }
+
+        .pagination-container-scroll::-webkit-scrollbar-thumb:hover {
+            background: #777; /* Color al pasar el ratón */
+        }

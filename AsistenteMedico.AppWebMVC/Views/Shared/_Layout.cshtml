@@ -7,10 +7,10 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/AsistenteMedico.AppWebMVC.styles.css" asp-append-version="true" />
+@*     <link rel="stylesheet" href="~/AsistenteMedico.AppWebMVC.styles.css" asp-append-version="true" /> *@
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <header>
         <div class="header-top-color">
@@ -37,15 +37,15 @@
             </div>
         </nav>
     </header>
-    <div class="container mt-4">
+    <div class="container mt-4 flex-grow-1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - AsistenteMedico.AppWebMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted mt-auto py-3 bg-light" style=" : static !important;">
+        <div class="container text-center">
+            &copy; 2025 - AsistenteMedico.AppWebMVC -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
         </div>
     </footer>
 
