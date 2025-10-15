@@ -47,8 +47,8 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
         [Required(ErrorMessage = "El campo Numero de paciente es obligatorio")]
         [MaxLength(10, ErrorMessage = "El campo Número de Paciente no puede tener más de 10 caracteres.")]
         public string? NumeroPaciente { get; set; }
-        [Display(Name = "Apellido")]
-        [Required(ErrorMessage = "El campo Apellido es obligatorio")]
+        [Display(Name = "Género")]
+   
         public string? Genero { get; set; }
 
     }

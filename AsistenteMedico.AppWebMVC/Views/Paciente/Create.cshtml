@@ -19,6 +19,11 @@
             <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
             <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="NumeroPaciente" class="form-label"></label>
+                        <input asp-for="NumeroPaciente" class="form-control" />
+                        <span asp-validation-for="NumeroPaciente" class="text-danger"></span>
+                    </div>
                 <div class="col-md-6 mb-3">
                     <label asp-for="PrimerNombre" class="form-label"></label>
                     <input asp-for="PrimerNombre" class="form-control" />
@@ -29,34 +34,43 @@
                     <input asp-for="Apellido" class="form-control" />
                     <span asp-validation-for="Apellido" class="text-danger"></span>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
+                   <div class="col-md-6 mb-3">
                     <label asp-for="Email" class="form-label"></label>
                     <input asp-for="Email" class="form-control" type="email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
+            </div>
+
+            <div class="row">
+             
                 <div class="col-md-6 mb-3">
                     <label asp-for="Telefono" class="form-label"></label>
                     <input asp-for="Telefono" class="form-control" type="tel" />
                     <span asp-validation-for="Telefono" class="text-danger"></span>
                 </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FechaNacimiento" class="form-label"></label>
+                        <input asp-for="FechaNacimiento" class="form-control" type="date" />
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                    </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="FechaNacimiento" class="form-label"></label>
-                    <input asp-for="FechaNacimiento" class="form-control" type="date" />
-                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
-                </div>
+            <div class="row">              
                 <div class="col-md-6 mb-3">
                     <label asp-for="CentroId" class="form-label"></label>
                     <input asp-for="CentroId" class="form-control" />
                     <span asp-validation-for="CentroId" class="text-danger"></span>
                 </div>
-            </div>
 
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Genero" class="form-label"></label>
+                        <select asp-for="Genero" class="form-select">
+                            <option value="">Seleccione...</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                        <span asp-validation-for="Genero" class="text-danger"></span>
+                    </div>
+            </div>
             <hr class="my-4" />
             <h6 class="text-primary mb-3">Contacto de Emergencia</h6>
 
