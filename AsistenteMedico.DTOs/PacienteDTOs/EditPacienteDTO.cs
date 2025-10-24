@@ -23,6 +23,9 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             Email = getIdResultPacientesDTO.Email;
             ContactoEmergencia = getIdResultPacientesDTO.ContactoEmergencia;
             TelefonoEmergencia = getIdResultPacientesDTO.TelefonoEmergencia;
+            RecibirEmail = getIdResultPacientesDTO.RecibirEmails;
+            RecibirSms = getIdResultPacientesDTO.RecibirSms;
+            
         }
 
 

@@ -71,23 +71,18 @@
                     <dt class="col-sm-4">Recibir SMS</dt>
                     <dd class="col-sm-8">
                         @* Asume que tienes las propiedades booleanas RecibirSms y RecibirEmails en GetIdResultPacienteDTO *@
-                        @* @(Model.RecibirSms ? "Sí (✅)" : "No (❌)") *@
-                        [PENDIENTE: Aplicar lógica de booleano]
+                        @(Model.RecibirSms ? "Sí (✅)" : "No (❌ )")
                     </dd>
                 </dl>
-
                 <dl class="row mb-1">
                     <dt class="col-sm-4">Recibir Emails</dt>
                     <dd class="col-sm-8">
-                        @* @(Model.RecibirEmails ? "Sí (✅)" : "No (❌)") *@
-                        [PENDIENTE: Aplicar lógica de booleano]
+                        @(Model.RecibirEmails ? "Sí (✅)" : "No (❌)")
                     </dd>
                 </dl>
             </div>
         </div>
-
     </div>
-
     <div class="card-footer bg-light d-flex justify-content-between">
         <a asp-action="Index" class="btn btn-outline-secondary">
             <i class="fas fa-arrow-left me-1"></i> Volver al Listado
@@ -97,7 +92,6 @@
         </a>
     </div>
 </div>
-
 @section Scripts {
     @{
         // No se necesitan scripts de validación aquí

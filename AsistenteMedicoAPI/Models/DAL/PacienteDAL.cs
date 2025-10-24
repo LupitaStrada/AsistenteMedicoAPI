@@ -49,12 +49,7 @@ namespace AsistenteMedicoAPI.Models.DAL
                 pacienteUpdate.TelefonoEmergencia = pacientes.TelefonoEmergencia;
                 pacienteUpdate.RecibirSms = pacientes.RecibirSms;
                 pacienteUpdate.RecibirEmail = pacientes.RecibirEmail;
-                //pacienteUpdate.NumeroPaciente = pacientes.NumeroPaciente;
-                //pacienteUpdate.EstaActivo = pacientes.EstaActivo;
-                //pacienteUpdate.FechaCreacion = pacientes.FechaCreacion;
-                //pacienteUpdate.FechaActualizacion = DateTime.Now;
-                //pacienteUpdate.UltimaVisita = pacientes.UltimaVisita;
-                
+             
                 result = await _context.SaveChangesAsync();
             }
             return result;

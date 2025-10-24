@@ -36,7 +36,12 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
 
         [Display(Name = "Contacto de emergencia")]
         public string TelefonoEmergencia { get; set; }
-      
-     
+
+        [Display(Name = "Recibir Mensajes")]
+        public bool RecibirSms { get; set; }
+        [Display(Name = "Recibir Email")]
+        public bool RecibirEmails { get; set; }
+
+
     }
 }
