@@ -28,18 +28,10 @@ namespace AsistenteMedico.DTOs.PacienteDTOs
             
         }
 
-
-        // ------------------------------------------------------------------
-        // 💡 SOLUCIÓN: CONSTRUCTOR VACÍO REQUERIDO POR MODEL BINDING (POST/PUT)
-        // ------------------------------------------------------------------
-        // Esto resuelve el error "must have a parameterless constructor"
         public EditPacienteDTO()
         {
         }
 
-        // ------------------------------------------------------------------
-        // PROPIEDADES CON DATA ANNOTATIONS
-        // ------------------------------------------------------------------
         [Required(ErrorMessage = "El campo Id es obligatorio")]
         public int Id { get; set; }
 

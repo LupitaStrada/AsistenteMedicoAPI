@@ -101,8 +101,8 @@ namespace AsistenteMedicoAPI.EndPoints
                 
                 //intentar crear el cliente y devolver el resultado correspondiente
                 int result = await pacienteDAL.Create(paciente);
-                if (result != 0) 5
-                    return Results.Ok(result);
+                if (result != 0) 
+                    return Results.Ok(result);  
                 else
                     return Results.StatusCode(500);
             });

@@ -31,8 +31,9 @@ public partial class AsistenteMedicoContext : DbContext
     public virtual DbSet<Paciente> Pacientes { get; set; }
 
     public virtual DbSet<TiposCita> Tiposcita { get; set; }
+    public virtual DbSet<Usuario> Usuarios { get; set; }
 
-   
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
